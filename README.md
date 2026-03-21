@@ -68,8 +68,6 @@ Success means balancing exploration (searching new regions) with exploitation (r
 - **Uniqueness:**  
   My approach emphasizes interpretability: margin distances from SVMs provide a clear signal of confidence, guiding whether to exploit or explore. This reduces wasted queries and builds a transparent decision trail.
 
----
-
 ### Week 4
 - **Strategy:** Hybrid scoring with multiple ML algorithms. I generated Week 4 inputs by averaging Week 1–3 inputs element‑wise. Each function was tested with Gradient Boosting, Random Forest, SVR, and Neural Networks.  
 - **Evaluation:** Used 2‑fold cross‑validation with MSE and MAE, plus a stability penalty (difference between Week 4 prediction and Week 3 output). Combined into a weighted hybrid score:
@@ -92,8 +90,6 @@ Success means balancing exploration (searching new regions) with exploitation (r
 - **Uniqueness:**  
 Hybrid scoring balanced error metrics and stability, preventing bias toward a single model and ensuring defensible selections.
 
----
-
 ### Week 5
 - **Strategy:**
 Bayesian optimisation was introduced in Week 5 to replace earlier heuristic methods. Using all historical data from Weeks 1–4, I trained multiple surrogate models (Random Forest, Gradient Boosting, SVR, kNN, MLP, and Gaussian Process Regression).
@@ -108,8 +104,6 @@ This ensured a principled exploration–exploitation balance.
 Week 5 outputs showed moderate improvements for several functions (e.g., F2, F4, F7, F8).
 Function 5 dropped sharply, indicating a highly non linear landscape.
 The EI driven approach successfully diversified exploration without drifting into unstable extremes.
-
----
 
 ### Week 6
 - **Strategy:**
@@ -126,8 +120,6 @@ Outputs stabilised across most functions.
 Function 8 remained strong, Function 2 continued improving, and Function 5 began recovering from Week 5’s drop.
 Ensemble averaging reduced noise and produced more reliable query points.
 
----
-
 ### Week 7
 - **Strategy:**
 Week 7 focused on boundary exploration to test whether extreme regions contained hidden optima.
@@ -138,8 +130,6 @@ This was motivated by ensemble disagreement and high uncertainty in sparsely sam
 •	Function 8 uncovered a new high value region near the upper boundary.
 These emergent behaviours reshaped the search strategy for subsequent rounds.
 
----
-
 ### Week 8
 - **Strategy:**
 Week 8 concentrated on exploiting the newly discovered ridge in Function 5 and refining the high value cluster in Function 8.
@@ -147,8 +137,6 @@ Anisotropic perturbations were used to probe sensitive dimensions more finely, w
 - **Outcome:**
 Function 8 reached ~8.0, confirming a stable basin.
 Function 5 remained extremely high, and other functions showed incremental improvements.
-
----
 
 ### Week 9
 - **Strategy:**
@@ -159,8 +147,6 @@ Candidate generation became cluster aware: instead of uniform sampling, candidat
 Function 8 reached ~8.80, and Function 5 remained extremely high.
 Functions 2 and 4 showed gradual improvements.
 The optimisation process became more stable and predictable.
-
----
 
 ### Week 10
 - **Strategy:**
@@ -174,8 +160,6 @@ This round resembled a model based RL planner: thousands of hypothetical candida
 Function 5 reached 1616.64, the highest value observed across all weeks.
 Function 8 remained strong, and Function 2 stabilised in a mid range band.
 
----
-
 ### Week 11
 - **Strategy:**
 Week 11 revisited boundary regions for Functions 1–4 to ensure no narrow optima were missed.
@@ -184,8 +168,6 @@ This was motivated by ensemble uncertainty and the need to validate whether earl
 Function 8 reached 9.16, a new high.
 Function 5 remained at its peak.
 Function 4 improved slightly, and Function 6 showed smoother behaviour.
-
----
 
 ### Week 12
 - **Strategy:**
@@ -208,7 +190,7 @@ The optimisation process converged with clear clusters for Functions 2, 5, and
 | **1** | [0.333333, 0.666667] → 5.7248e 48 | [0.777778, 0.222222] → 0.1669 | [0.142857, 0.571429, 0.857143] → −0.0351 | [0.285714, 0.714286, 0.428571, 0.857143] → −16.1819 | [0.062500, 0.500000, 0.937500, 0.250000] → 94.6212 | [0.111111, 0.444444, 0.777778, 0.222222, 0.888889] → −1.7667 | [0.090909, 0.363636, 0.636364, 0.181818, 0.545455, 0.818182] → 1.0627 | [0.125000, 0.250000, 0.375000, 0.500000, 0.625000, 0.750000, 0.875000, 0.062500] → 8.6682 |
 | **2** | [0.500000, 0.500000] → 2.6753e 9 | [0.700000, 0.300000] → 0.4380 | [0.200000, 0.600000, 0.800000] → −0.0651 | [0.200000, 0.800000, 0.300000, 0.700000] → −15.3005 | [0.080000, 0.520000, 0.920000, 0.270000] → 73.8487 | [0.200000, 0.500000, 0.800000, 0.300000, 0.900000] → −1.7217 | [0.120000, 0.380000, 0.660000, 0.220000, 0.580000, 0.840000] → 0.8381 | [0.150000, 0.275000, 0.400000, 0.525000, 0.650000, 0.775000, 0.900000, 0.100000] → 8.5282 |
 | **3** | [0.450000, 0.550000] → 1.55e 13 | [0.725000, 0.275000] → 0.4116 | [0.800000, 0.200000, 0.400000] → −0.0390 | [0.250000, 0.750000, 0.350000, 0.650000] → −11.86 | [0.070000, 0.510000, 0.930000, 0.260000] → 85.55 | [0.210000, 0.490000, 0.810000, 0.310000, 0.910000] → −1.82 | [0.100000, 0.360000, 0.640000, 0.200000, 0.560000, 0.820000] → 1.01 | [0.130000, 0.260000, 0.380000, 0.510000, 0.630000, 0.760000, 0.880000, 0.070000] → 8.63 |
-| **4** | [0.427778, 0.572222] | [0.734259, 0.265741] | [0.380952, 0.457143, 0.685714] | [0.245238, 0.754762, 0.359524, 0.735714] | [0.070833, 0.510000, 0.929167, 0.260000] | [0.173704, 0.478148, 0.795926, 0.277407, 0.899630] | [0.103636, 0.367879, 0.645455, 0.200606, 0.561818, 0.826061] | [0.135000, 0.261667, 0.385000, 0.511667, 0.635000, 0.761667, 0.885000, 0.077500] |
+| **4** | [0.427778, 0.572222] → 1.41e‑16 | [0.734259, 0.265741] → 0.3110 | [0.380952, 0.457143, 0.685714] → −0.1185 | [0.245238, 0.754762, 0.359524, 0.735714] → −14.1099 | [0.070833, 0.510000, 0.929167, 0.260000] → 84.2661 | [0.173704, 0.478148, 0.795926, 0.277407, 0.899630]  → −1.8337 | [0.103636, 0.367879, 0.645455, 0.200606, 0.561818, 0.826061] → 0.9692 | [0.135000, 0.261667, 0.385000, 0.511667, 0.635000, 0.761667, 0.885000, 0.077500] → 8.6114 |
 | **5**	| [0.420000, 0.580000] → 3.400e 18 | [0.630000, 0.370000] → 0.3658	| [0.310000, 0.520000, 0.740000] → −0.1188	| [0.270000, 0.610000, 0.440000, 0.830000] → −13.1643 |	[0.180000, 0.570000, 0.890000, 0.330000] → 54.3674 | [0.220000, 0.480000, 0.790000, 0.290000, 0.910000] → −1.7569	| [0.140000, 0.390000, 0.660000, 0.230000, 0.580000, 0.840000] → 0.8329	| [0.160000, 0.280000, 0.410000, 0.530000, 0.660000, 0.780000, 0.900000, 0.110000] → 8.5041 |
 | **6** |	[0.436555, 0.561852] → 9.045e 15 | [0.643711, 0.350427] → 0.4067 | [0.290003, 0.526542, 0.748973] → −0.1086 |	[0.257349, 0.623142, 0.431400, 0.843698] → −13.8931 |	[0.164072, 0.559418, 0.909880, 0.318913] → 74.4239 | [0.203885, 0.477786, 0.796998, 0.271818, 0.890277] → −1.8021	| [0.133556, 0.371272, 0.667798, 0.244733, 0.565004, 0.824401] → 0.9452	| [0.140764, 0.294750, 0.399680, 0.531209, 0.640643, 0.763956, 0.880412, 0.096299] → 8.5786 |
 | **7** |	[0.999509, 0.605025] → −7.41e 97 |	[0.709894, 0.999867] → 0.5846 |	[0.018005, 0.040702, 0.029470] → −0.1458 | [0.022476, 0.055750, 0.000980, 0.032298] → −23.1301 |	[0.990736, 0.060822, 0.932835, 0.009122] → 1084.1094 |	[0.565687, 0.022461, 0.000202, 0.168316, 0.021242] → −1.7200 |	[0.998542, 0.979690, 0.934707, 0.047897, 0.948514, 0.802608] → 8.71e 05 |	[0.731876, 0.927411, 0.970310, 0.985745, 0.915076, 0.597028, 0.907676, 0.859568] → 4.7559 |
