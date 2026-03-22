@@ -203,13 +203,13 @@ The optimisation process converged with clear clusters for Functions 2, 5, and
 The full query history is stored in the /data/ directory.
 
 ## Summary of Best So Far Outputs (Across All Weeks)
-Function	Best Output	Week Achieved	Notes
-F1	~5.7e 48	Week 1	Flat function, no meaningful variation
-F2	~0.6167	Week 9	Stable mid range optimum
-F3	~−0.0351	Week 1	Mostly negative, weak structure
-F4	~−6.12	Week 10	Improved gradually with boundary exploration
-F5	1616.64	Week 10	Major ridge discovered in Weeks 7–10
-F6	~−1.4488	Week 12	Slight improvements with ensemble smoothing
-F7	~1.0627	Week 1	Volatile, collapsed in Week 7
-F8	9.2523	Week 12	Strong basin near upper boundary
+| Function |	Best | Output |	Week | Achieved |	Notes |
+| **F1** |	~5.7e 48 |	Week 1 |	Flat function, no meaningful variation
+| **F2** | ~0.6167 |	Week 9 |	Stable mid range optimum |
+| **F3**	| ~−0.0351 |	Week 1 |	Mostly negative, weak structure |
+| **F4**	| ~−6.12 |	Week 10 |	Improved gradually with boundary exploration |
+| **F5**	| 1616.64 |	Week 10 |	Major ridge discovered in Weeks 7–10 |
+| **F6**	| ~−1.4488 | Week 12 | Slight improvements with ensemble smoothing |
+| **F7**	| ~1.0627 |	Week 1 | Volatile, collapsed in Week 7 |
+| **F8** | 9.2523 |	Week 12 |	Strong basin near upper boundary |
 
