@@ -255,5 +255,3 @@ All plots are stored in /plots/.
 ### Included:
 - best_so_far.png — Best output per function across all weeks
 - f1_trajectory.png … f8_trajectory.png — Per-function output trajectories
-- surrogate_uncertainty_f5.png — GPR mean ± uncertainty
-- surrogate_uncertainty_f8.png — GPR mean ± uncertainty
