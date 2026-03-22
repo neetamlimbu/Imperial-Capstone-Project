@@ -1,33 +1,48 @@
 ## Datasheet for the BBO Capstone Project Dataset
 ### Motivation
-This dataset was created for the Imperial College London Black Box Optimisation (BBO) Capstone Project. It records all query vectors and function evaluations submitted across 13 weeks for eight hidden black box functions. The dataset supports surrogate modelling, sequential optimisation, performance analysis, and reproducibility of the full optimisation pipeline. It was created by Neetam as part of the capstone requirements and is not externally funded.
-The dataset enables transparent documentation of how decisions were made, how the optimiser evolved, and how the search space was explored under strict evaluation constraints.
+This dataset was created for the Imperial College London Black Box Optimisation (BBO) Capstone Project. It records all query vectors and function evaluations submitted across 13 weeks for eight hidden black box functions. The dataset supports surrogate modelling, sequential optimisation, performance analysis, and reproducibility of the full optimisation pipeline. 
+With no gradients, no analytical form, and no second chances, every data point becomes a clue.
+Over 13 weeks, the dataset grew into a living record of:
+- how the optimiser explored the search space,
+- how it adapted to unexpected behaviour,
+- and how each function gradually revealed its character.
 
 ## Composition
 ### Contents
 The dataset contains:
-•	Input vectors (x \in [0,1]^d) for eight functions (2D–8D)
-•	Corresponding scalar outputs returned by the portal
-•	Week indices (1–13)
-•	Function indices (1–8)
-•	Optional metadata (e.g., strategy used that week)
-### Size
-By Week 13:
-•	Initial data from .npy files (10–40 points per function)
-•	13 weekly submissions × 8 functions = 104 new points
-•	Total dataset size per function ranges from ~20 to ~53 points
-•	Combined dataset across all functions: ~250–350 query–response pairs
+•	Input vectors: (x \in [0,1]^d) for eight functions (2D–8D)
+•	Output: Corresponding scalar outputs returned by the portal
+•	Week indices (1–13): which submission round produced the point
+•	Function indices (1–8): F1–F8
+•	Optional metadata: strategy used that week (e.g., “ensemble_exploit”, “trust_region”)
+### Dataset Size
+By Week 13, the dataset contains:
+•	Initial samples: 10–40 points per function (dimensionality‑dependent)
+•	Weekly submissions: 13 rounds × 8 functions = 104 new points
+•	Total dataset per function: ~20 to ~53 points
+•	Total across all functions: ~250–350 query–response pairs
 ### Format
-•	Inputs stored as Python arrays or CSV rows
-•	Outputs stored as NumPy float64 values
+•	Python lists / NumPy arrays during optimisation
+•	CSV files for archival and reproducibility
 •	All inputs lie in ([0,1)) as required by the portal
-•	Outputs may be positive or negative depending on the function landscape
-•	No missing values or corrupted entries
+•	Outputs may be positive or negative depending on the function landscape stored with full floating‑point precision
+
 ### Gaps or biases
-•	Sparse sampling in high dimensional functions (6D–8D)
-•	Increasing exploitation bias in later weeks
-•	No personal or sensitive data
-•	No demographic subpopulations
+The dataset reflects the optimiser’s journey:
+• 	Early weeks: broad exploration
+• 	Middle weeks: trust‑region refinement
+• 	Late weeks: tight exploitation around discovered peaks
+
+As a result:
+• 	High‑dimensional functions (6D–8D) are sparsely sampled
+• 	Later weeks show strong exploitation bias
+• 	Some regions of the domain remain untouched
+• 	No personal or sensitive data is present
+
+### Subpopulations
+Two natural subpopulations emerge:
+1. 	Initial samples — random, wide‑coverage points
+2. 	Optimiser‑generated samples — increasingly concentrated near promising regions
 
 ## Collection Process
 ### How queries were generated
@@ -40,24 +55,25 @@ The dataset was collected through weekly submissions to the capstone portal. Eac
 •	**Weeks 8–10:** Refinement of ensemble; trust region–like sampling
 •	**Weeks 11–13:** Stability focused exploitation with controlled exploration
 ### Time frame
-•	13 weeks of sequential submissions
-•	One query per function per week
-•	Results returned after each processing cycle
+•	**Duration:** 13 weeks of sequential submissions
+•	**Frequency:** One query per function per week
+•	**Feedback:** Results returned after each processing cycle
 ### Ethical review
 Not required. The dataset contains only synthetic function evaluations.
 
-## Preprocessing and Uses
+## Preprocessing and Intended Uses
 ### Preprocessing
-•	Standardisation of inputs and outputs during model training
+•	Standardisation of inputs using StandardScaler and outputs during model training
 •	Weekly stacking of historical data into per function datasets
 •	No permanent modification of stored data
 •	No feature engineering
+•   All transformations are reversible and applied only at runtime
 ### Intended uses
-•	Surrogate modelling
+•	Surrogate modelling (GPs, ensembles)
 •	Acquisition function optimisation
-•	Visualisation of convergence
-•	Reproducibility and auditability
-•	Portfolio demonstration of optimisation techniques
+•	Visualisation of convergence and trust‑region behaviour
+• Reproducing the full optimisation pipeline
+• Demonstrating optimisation techniques in a portfolio
 ### Inappropriate uses
 •	Inferring global function structure
 •	Using the dataset as a benchmark for unrelated optimisation tasks
