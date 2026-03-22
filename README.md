@@ -77,17 +77,17 @@ Success means balancing exploration (searching new regions) with exploitation (r
 - **Outcome:** Models were selected per index based on lowest hybrid score. Random Forest dominated high‑variance functions, Gradient Boosting excelled in nonlinear recovery, SVR handled oscillations, and Neural Networks captured subtle nonlinear corrections.
 
 #### Methods and Balance
-- **ML methods:**  
+**ML methods:**  
 - Gradient Boosting for nonlinear recovery.  
 - Random Forest for high‑variance outputs.  
 - SVR for oscillatory or near‑stable functions.  
 - Neural Networks for subtle nonlinear corrections.  
 
-- **Exploration vs. exploitation:**  
+**Exploration vs. exploitation:**  
 - Exploit strong regions identified in Weeks 2–3 (~70%).  
 - Explore uncertain regions with hybrid scoring (~30%).  
 
-- **Uniqueness:**  
+**Uniqueness:**  
 Hybrid scoring balanced error metrics and stability, preventing bias toward a single model and ensuring defensible selections.
 
 ### Week 5
@@ -184,7 +184,7 @@ The optimisation process converged with clear clusters for Functions 2, 5, and
 
 ---
 
-## Query history (Rounds 1–12)
+## 5. Query history (Rounds 1–12)
 | Week   | Function 1 | Function 2 | Function 3 | Function 4 | Function 5 | Function 6 | Function 7 | Function 8 |
 |--------|------------|------------|------------|------------|------------|------------|------------|------------|
 | **1** | [0.333333, 0.666667] → 5.7248e 48 | [0.777778, 0.222222] → 0.1669 | [0.142857, 0.571429, 0.857143] → −0.0351 | [0.285714, 0.714286, 0.428571, 0.857143] → −16.1819 | [0.062500, 0.500000, 0.937500, 0.250000] → 94.6212 | [0.111111, 0.444444, 0.777778, 0.222222, 0.888889] → −1.7667 | [0.090909, 0.363636, 0.636364, 0.181818, 0.545455, 0.818182] → 1.0627 | [0.125000, 0.250000, 0.375000, 0.500000, 0.625000, 0.750000, 0.875000, 0.062500] → 8.6682 |
@@ -202,7 +202,7 @@ The optimisation process converged with clear clusters for Functions 2, 5, and
 
 The full query history is stored in the /data/ directory.
 
-## Summary of Best So Far Outputs (Across All Weeks)
+## 6. Summary of Best So Far Outputs (Across All Weeks)
 | Function |	Best Output |	Week | Achieved |	Notes |
 |----------|--------------|------|----------|-------|
 | **F1** |	~5.7e 48 |	Week 1 |	Flat function, no meaningful variation
@@ -214,3 +214,46 @@ The full query history is stored in the /data/ directory.
 | **F7**	| ~1.0627 |	Week 1 | Volatile, collapsed in Week 7 |
 | **F8** | 9.2523 |	Week 12 |	Strong basin near upper boundary |
 
+## 7. Final conclusions
+Across twelve rounds, the optimisation strategy evolved from naive exploration to a fully model based, uncertainty aware pipeline. Surrogate modelling, ensemble learning, and acquisition driven sampling enabled efficient navigation of complex landscapes.
+Key insights:
+•	Function 5 contained a steep, high value ridge, discovered through boundary exploration.
+•	Function 8 exhibited a smooth, navigable basin near the upper boundary.
+•	Functions 1 and 3 remained flat, confirming limited structure.
+•	Rolling surrogates and ensemble averaging improved stability in later rounds.
+The project demonstrates practical mastery of Bayesian optimisation under strict query constraints.
+
+## 8. What I learned
+•	How to design experiments under uncertainty
+•	How to build and update surrogate models
+•	How to balance exploration and exploitation
+•	How to interpret uncertainty for decision making
+•	How to structure a multi week optimisation pipeline
+•	How to document and communicate ML workflows professionally
+
+## 9. Reproducibility
+To reproduce the workflow:
+1.	Load initial .npy inputs/outputs (not included in repo; link provided).
+2.	Train surrogate models (GPR + ensemble).
+3.	Generate candidate points in ([0,1]^d).
+4.	Compute acquisition scores (EI or uncertainty weighted).
+5.	Select the next query.
+6.	Append new data and repeat.
+
+A full implementation is provided in the notebooks.
+
+## 10. Documentation
+•	docs/datasheet.md — Data description, limitations, context
+•	docs/model_card.md — Model behaviour, assumptions, interpretability
+•	plots/ — Optimisation trajectories and uncertainty visualisations
+•	notebooks/ — Full code for all functions
+
+## 11. Visualisations
+
+All plots are stored in /plots/.
+
+### Included:
+- best_so_far.png — Best output per function across all weeks
+- f1_trajectory.png … f8_trajectory.png — Per-function output trajectories
+- surrogate_uncertainty_f5.png — GPR mean ± uncertainty
+- surrogate_uncertainty_f8.png — GPR mean ± uncertainty
