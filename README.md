@@ -184,7 +184,7 @@ The optimisation process converged with clear clusters for Functions 2, 5, and
 
 ---
 
-## Query history (Rounds 1–4)
+## Query history (Rounds 1–12)
 | Week   | Function 1 | Function 2 | Function 3 | Function 4 | Function 5 | Function 6 | Function 7 | Function 8 |
 |--------|------------|------------|------------|------------|------------|------------|------------|------------|
 | **1** | [0.333333, 0.666667] → 5.7248e 48 | [0.777778, 0.222222] → 0.1669 | [0.142857, 0.571429, 0.857143] → −0.0351 | [0.285714, 0.714286, 0.428571, 0.857143] → −16.1819 | [0.062500, 0.500000, 0.937500, 0.250000] → 94.6212 | [0.111111, 0.444444, 0.777778, 0.222222, 0.888889] → −1.7667 | [0.090909, 0.363636, 0.636364, 0.181818, 0.545455, 0.818182] → 1.0627 | [0.125000, 0.250000, 0.375000, 0.500000, 0.625000, 0.750000, 0.875000, 0.062500] → 8.6682 |
@@ -202,13 +202,14 @@ The optimisation process converged with clear clusters for Functions 2, 5, and
 
 The full query history is stored in the /data/ directory.
 
-## Summary of Best So Far Outputs (Across All Weeks)
-### Function	Best Output	Week Achieved	Notes
-| **F1** |	~5.7e 48	| Week 1	| Flat function, no meaningful variation |
-| **F2** |	~0.6167	| Week 9 |	Stable mid range optimum |
-| **F3** |	~ 0.0351 | Week 1 |	Mostly negative, weak structure |
-| **F4** |	~ 6.12 |	Week 10 |	Improved gradually with boundary exploration |
-| **F5** |	1616.64 |	Week 10 |	Major ridge discovered in Weeks 7–10 |
-| **F6** |	~ 1.4488 |	Week 12 |	Slight improvements with ensemble smoothing |
-| **F7** |	~1.0627 |	Week 1 |	Volatile, collapsed in Week 7 |
-| **F8** |	9.2523 |	Week 12 |	Strong basin near upper boundary |
+##Summary of Best So Far Outputs (Across All Weeks)
+Function	Best Output	Week Achieved	Notes
+F1	~5.7e 48	Week 1	Flat function, no meaningful variation
+F2	~0.6167	Week 9	Stable mid range optimum
+F3	~−0.0351	Week 1	Mostly negative, weak structure
+F4	~−6.12	Week 10	Improved gradually with boundary exploration
+F5	1616.64	Week 10	Major ridge discovered in Weeks 7–10
+F6	~−1.4488	Week 12	Slight improvements with ensemble smoothing
+F7	~1.0627	Week 1	Volatile, collapsed in Week 7
+F8	9.2523	Week 12	Strong basin near upper boundary
+
