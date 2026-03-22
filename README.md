@@ -202,7 +202,7 @@ The optimisation process converged with clear clusters for Functions 2, 5, and
 
 The full query history is stored in the /data/ directory.
 
-##Summary of Best So Far Outputs (Across All Weeks)
+## Summary of Best So Far Outputs (Across All Weeks)
 Function	Best Output	Week Achieved	Notes
 F1	~5.7e 48	Week 1	Flat function, no meaningful variation
 F2	~0.6167	Week 9	Stable mid range optimum
