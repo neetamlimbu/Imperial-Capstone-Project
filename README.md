@@ -359,7 +359,7 @@ A full implementation is provided in the notebooks.
 - `docs/architecture_diagram.md` — High‑level system and pipeline architecture  
 
 ### Repository layout
-
+```
 .
 ├── README.md
 ├── requirements.txt
@@ -382,7 +382,7 @@ A full implementation is provided in the notebooks.
 │   ├── weekly_strategy.md
 │   └── architecture_diagram.md
 └── PROJECT_PRESENTATION.md
-
+```
 ---
 
 ## 13. Visualisations
