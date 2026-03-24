@@ -1,3 +1,4 @@
+```mermaid
 flowchart TD
 
     A[Raw Input Data] --> B[Historical Outputs]
@@ -20,3 +21,4 @@ flowchart TD
     N --> O[Performance Charts]
     N --> P[Uncertainty Plots]
     N --> Q[Reports and Insights]
+```
