@@ -114,7 +114,8 @@ These follow the spirit of datasheets and model cards to make the project audita
   f1 output: 2.6752879910742468e-9
   f5 output: 73.84870222928335
   ```
-  
+  ---
+
 ## 5. Challenge objectives
 The objective is to identify query points that optimise each function (maximisation in most cases). Key constraints include:
 
@@ -128,6 +129,8 @@ Success means balancing exploration (searching new regions) with exploitation (r
 - Exploitation: Refining known high‑value areas
 - Interpretability: Building transparent surrogate models
 - Efficiency: Minimising wasted queries
+
+---
 
 ## 6. Technical approach
 ### Week 1
@@ -289,6 +292,8 @@ The optimisation process converged with clear clusters for Functions 2, 5, and
 
 The full query history is stored in the /data/ directory.
 
+---
+
 ## 8. Summary of Best So Far Outputs (Across All Weeks)
 | Function |	Best Output |	Week | Achieved |	Notes |
 |----------|--------------|------|----------|-------|
@@ -301,6 +306,8 @@ The full query history is stored in the /data/ directory.
 | **F7**	| ~1.0627 |	Week 1 | Volatile, collapsed in Week 7 |
 | **F8** | 9.2523 |	Week 12 |	Strong basin near upper boundary |
 
+---
+
 ## 9. Final conclusions
 Across twelve rounds, the optimisation strategy evolved from naive exploration to a fully model based, uncertainty aware pipeline. Surrogate modelling, ensemble learning, and acquisition driven sampling enabled efficient navigation of complex landscapes.
 Key insights:
@@ -310,6 +317,8 @@ Key insights:
 •	Rolling surrogates and ensemble averaging improved stability in later rounds.
 The project demonstrates practical mastery of Bayesian optimisation under strict query constraints.
 
+---
+
 ## 10. What I learned
 •	How to design experiments under uncertainty
 •	How to build and update surrogate models
@@ -317,6 +326,8 @@ The project demonstrates practical mastery of Bayesian optimisation under strict
 •	How to interpret uncertainty for decision making
 •	How to structure a multi week optimisation pipeline
 •	How to document and communicate ML workflows professionally
+
+---
 
 ## 11. Reproducibility
 To reproduce the workflow:
@@ -328,6 +339,8 @@ To reproduce the workflow:
 6.	Append new data and repeat.
 
 A full implementation is provided in the notebooks.
+
+---
 
 ## 12. Documentation
 Key documentation
@@ -359,6 +372,7 @@ Repository layout
 │   └── architecture_diagram.md
 ├── PROJECT_PRESENTATION.md       # Final presentation-style project summary
 
+---
 
 ## 13. Visualisations
 
@@ -369,6 +383,7 @@ All plots are stored in /plots/.
 - f1_trajectory.png … f8_trajectory.png — Per-function output trajectories
 - Additional plots for uncertainty, candidate distributions, and cluster aware sampling (where relevant)
 
+---
 
 ## 14. Architecture diagram
 The overall optimisation pipeline and data flow are documented in:
@@ -380,6 +395,7 @@ o	Query selection and logging
 o	Visualisation and reporting
 This diagram is intended for technical stakeholders and interviewers to quickly understand how the system is structured end to end.
 
+---
 
 ## 15. Weekly strategy
 A consolidated, narrative view of how the strategy evolved week by week (methods, visualisations, and rationale) is provided in:
