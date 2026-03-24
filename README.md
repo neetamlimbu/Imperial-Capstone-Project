@@ -114,7 +114,7 @@ These follow the spirit of datasheets and model cards to make the project audita
   f1 output: 2.6752879910742468e-9
   f5 output: 73.84870222928335
   ```
-  ---
+---
 
 ## 5. Challenge objectives
 The objective is to identify query points that optimise each function (maximisation in most cases). Key constraints include:
@@ -309,95 +309,92 @@ The full query history is stored in the /data/ directory.
 ---
 
 ## 9. Final conclusions
-Across twelve rounds, the optimisation strategy evolved from naive exploration to a fully model based, uncertainty aware pipeline. Surrogate modelling, ensemble learning, and acquisition driven sampling enabled efficient navigation of complex landscapes.
-Key insights:
-•	Function 5 contained a steep, high value ridge, discovered through boundary exploration.
-•	Function 8 exhibited a smooth, navigable basin near the upper boundary.
-•	Functions 1 and 3 remained flat, confirming limited structure.
-•	Rolling surrogates and ensemble averaging improved stability in later rounds.
+
+Across twelve rounds, the optimisation strategy evolved from naive exploration to a fully model‑based, uncertainty‑aware pipeline. Surrogate modelling, ensemble learning, and acquisition‑driven sampling enabled efficient navigation of complex landscapes.
+
+**Key insights:**
+
+- Function 5 contained a steep, high‑value ridge, discovered through boundary exploration.
+- Function 8 exhibited a smooth, navigable basin near the upper boundary.
+- Functions 1 and 3 remained flat, confirming limited structure.
+- Rolling surrogates and ensemble averaging improved stability in later rounds.
+
 The project demonstrates practical mastery of Bayesian optimisation under strict query constraints.
 
 ---
 
 ## 10. What I learned
-•	How to design experiments under uncertainty
-•	How to build and update surrogate models
-•	How to balance exploration and exploitation
-•	How to interpret uncertainty for decision making
-•	How to structure a multi week optimisation pipeline
-•	How to document and communicate ML workflows professionally
+
+- How to design experiments under uncertainty  
+- How to build and update surrogate models  
+- How to balance exploration and exploitation  
+- How to interpret uncertainty for decision‑making  
+- How to structure a multi‑week optimisation pipeline  
+- How to document and communicate ML workflows professionally  
 
 ---
 
 ## 11. Reproducibility
+
 To reproduce the workflow:
-1.	Load initial .npy inputs/outputs (not included in repo; link provided).
-2.	Train surrogate models (GPR + ensemble).
-3.	Generate candidate points in ([0,1]^d).
-4.	Compute acquisition scores (EI or uncertainty weighted).
-5.	Select the next query.
-6.	Append new data and repeat.
+
+1. Load initial `.npy` inputs/outputs (not included in repo; link provided).  
+2. Train surrogate models (GPR + ensemble).  
+3. Generate candidate points in \([0,1]^d\).  
+4. Compute acquisition scores (EI or uncertainty‑weighted).  
+5. Select the next query.  
+6. Append new data and repeat.
 
 A full implementation is provided in the notebooks.
 
 ---
 
 ## 12. Documentation
-Key documentation
-•	docs/datasheet.md — Data description, limitations, context
-•	docs/model_card.md — Model behaviour, assumptions, interpretability
-•	docs/weekly_strategy.md — Consolidated week by week strategy notes and reflections
-•	docs/architecture_diagram.md — High level system and pipeline architecture
-Repository layout
-.
-├── README.md                     # This file
-├── requirements.txt              # Python dependencies
-├── function_description_and_details.md
-├── scripts/                      # Python modules
-│   ├── bayesian_optimisation/    # BO (standard, exploitative, noise-aware)
-│   ├── logistic_regression/      # Linear and nonlinear logistic regression
-│   ├── neural_networks/          # MLP / NN-based surrogates
-│   └── utils/                    # Data loading and visualisation helpers
-├── data/                         # Query data by week
-│   ├── initial_data/
-│   ├── week1/
-│   ├── ...
-│   └── week12/
-├── notebooks/                    # Full code for all functions and experiments
-├── plots/                        # Optimisation trajectories and uncertainty visualisations
-├── docs/
-│   ├── datasheet.md
-│   ├── model_card.md
-│   ├── weekly_strategy.md
-│   └── architecture_diagram.md
-├── PROJECT_PRESENTATION.md       # Final presentation-style project summary
+
+### Key documentation
+
+- `docs/datasheet.md` — Data description, limitations, context  
+- `docs/model_card.md` — Model behaviour, assumptions, interpretability  
+- `docs/weekly_strategy.md` — Consolidated week‑by‑week strategy notes and reflections  
+- `docs/architecture_diagram.md` — High‑level system and pipeline architecture  
+
+### Repository layout
+
+. ├── README.md                     # This file ├── requirements.txt              # Python dependencies ├── function_description_and_details.md ├── scripts/                      # Python modules │   ├── bayesian_optimisation/    # BO (standard, exploitative, noise-aware) │   ├── logistic_regression/      # Linear and nonlinear logistic regression │   ├── neural_networks/          # MLP / NN-based surrogates │   └── utils/                    # Data loading and visualisation helpers ├── data/                         # Query data by week │   ├── initial_data/ │   ├── week1/ │   ├── ... │   └── week12/ ├── notebooks/                    # Full code for all functions and experiments ├── plots/                        # Optimisation trajectories and uncertainty visualisations ├── docs/ │   ├── datasheet.md │   ├── model_card.md │   ├── weekly_strategy.md │   └── architecture_diagram.md ├── PROJECT_PRESENTATION.md       # Final presentation-style project summary
 
 ---
 
 ## 13. Visualisations
 
-All plots are stored in /plots/.
+All plots are stored in `/plots/`.
 
 ### Included:
-- best_so_far.png — Best output per function across all weeks
-- f1_trajectory.png … f8_trajectory.png — Per-function output trajectories
-- Additional plots for uncertainty, candidate distributions, and cluster aware sampling (where relevant)
+
+- `best_so_far.png` — Best output per function across all weeks  
+- `f1_trajectory.png` … `f8_trajectory.png` — Per‑function output trajectories  
+- Additional plots for uncertainty, candidate distributions, and cluster‑aware sampling (where relevant)
 
 ---
 
 ## 14. Architecture diagram
+
 The overall optimisation pipeline and data flow are documented in:
-•	docs/architecture_diagram.md — High level architecture of: 
-o	Data ingestion and storage
-o	Surrogate training and evaluation
-o	Candidate generation and acquisition scoring
-o	Query selection and logging
-o	Visualisation and reporting
-This diagram is intended for technical stakeholders and interviewers to quickly understand how the system is structured end to end.
+
+- `docs/architecture_diagram.md` — High‑level architecture of:
+  - Data ingestion and storage  
+  - Surrogate training and evaluation  
+  - Candidate generation and acquisition scoring  
+  - Query selection and logging  
+  - Visualisation and reporting  
+
+This diagram is intended for technical stakeholders and interviewers to quickly understand how the system is structured end‑to‑end.
 
 ---
 
 ## 15. Weekly strategy
-A consolidated, narrative view of how the strategy evolved week by week (methods, visualisations, and rationale) is provided in:
-•	docs/weekly_strategy.md
-This complements the raw query history and plots by explaining why each change was made and how it affected subsequent decisions.
+
+A consolidated, narrative view of how the strategy evolved week‑by‑week (methods, visualisations, and rationale) is provided in:
+
+- `docs/weekly_strategy.md`
+
+This complements the raw query history and plots by explaining **why** each change was made and how it affected subsequent decisions.
