@@ -360,10 +360,28 @@ A full implementation is provided in the notebooks.
 
 ### Repository layout
 
-```
-. ├── README.md                     # This file ├── requirements.txt              # Python dependencies ├── function_description_and_details.md ├── scripts/                      # Python modules │   ├── bayesian_optimisation/    # BO (standard, exploitative, noise-aware) │   ├── logistic_regression/      # Linear and nonlinear logistic regression │   ├── neural_networks/          # MLP / NN-based surrogates │   └── utils/                    # Data loading and visualisation helpers ├── data/                         # Query data by week │   ├── initial_data/ │   ├── week1/ │   ├── ... │   └── week12/ ├── notebooks/                    # Full code for all functions and experiments ├── plots/                        # Optimisation trajectories and uncertainty visualisations ├── docs/ │   ├── datasheet.md │   ├── model_card.md │   ├── weekly_strategy.md │   └── architecture_diagram.md ├── PROJECT_PRESENTATION.md       # Final presentation-style project summary
-
-```
+.
+├── README.md
+├── requirements.txt
+├── function_description_and_details.md
+├── scripts/
+│   ├── bayesian_optimisation/
+│   ├── logistic_regression/
+│   ├── neural_networks/
+│   └── utils/
+├── data/
+│   ├── initial_data/
+│   ├── week1/
+│   ├── ...
+│   └── week12/
+├── notebooks/
+├── plots/
+├── docs/
+│   ├── datasheet.md
+│   ├── model_card.md
+│   ├── weekly_strategy.md
+│   └── architecture_diagram.md
+└── PROJECT_PRESENTATION.md
 
 ---
 
