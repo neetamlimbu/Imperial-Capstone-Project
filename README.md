@@ -1,15 +1,102 @@
 # Black-Box Optimisation (BBO) Capstone Project
 
+## Table of contents
+
+- [1. Project overview](#1-project-overview)
+  - [What is black-box optimisation?](#what-is-black-box-optimisation)
+  - [Real-world relevance](#real-world-relevance)
+  - [For a general audience](#for-a-general-audience)
+  - [Career impact](#career-impact)
+- [2. Project presentation](#2-project-presentation)
+- [3. Datasheet and model card](#3-datasheet-and-model-card)
+- [4. Inputs and outputs](#4-inputs-and-outputs)
+- [5. Challenge objectives](#5-challenge-objectives)
+- [6. Technical approach](#6-technical-approach)
+  - [Early phase (Weeks 1–3)](#early-phase-weeks-13)
+  - [Hybrid modelling (Week 4)](#hybrid-modelling-week-4)
+  - [Bayesian and ensemble phase (Weeks 5–6)](#bayesian-and-ensemble-phase-weeks-56)
+  - [Boundary and cluster-aware phase (Weeks 7–9)](#boundary-and-cluster-aware-phase-weeks-7-9)
+  - [Final refinement (Weeks 10–12)](#final-refinement-weeks-10-12)
+- [7. Query history (Rounds 1–12)](#7-query-history-rounds-1–12)
+- [8. Summary of best-so-far outputs](#8-summary-of-best-so-far-outputs)
+- [9. Final conclusions](#9-final-conclusions)
+- [10. What I learned](#10-what-i-learned)
+- [11. Reproducibility](#11-reproducibility)
+- [12. Documentation and repository structure](#12-documentation-and-repository-structure)
+- [13. Visualisations](#13-visualisations)
+- [14. Architecture diagram](#14-architecture-diagram)
+- [15. Weekly strategy](#15-weekly-strategy)
+
+---
+
 ## 1. Project overview
 The BBO capstone project simulates real‑world machine learning scenarios where the underlying function is unknown and direct analytical solutions are unavailable. The challenge is to query these black‑box functions strategically, learn from the responses, and move closer to optimal solutions with limited information.
 
-**Goal:**  
-The overall goal is to minimise or maximise the outputs of eight hidden functions while using as few queries as possible. This mirrors practical ML problems such as hyperparameter tuning, drug discovery, or financial modelling, where evaluation is costly and interpretability is limited.
+This repository contains my full solution to the 13 week Black Box Optimisation (BBO) Capstone Challenge.  
+The task: maximise eight unknown functions (2D–8D) with **one query per function per week**, no gradients, and no structural information.
 
-**Career Impact:**  
-Completing this project strengthens skills in experimental design, surrogate modelling, and decision‑making under uncertainty. These are critical abilities for data scientists working in domains like fintech, healthcare, or AI systems engineering.
+The project demonstrates:
 
-## 2. Inputs and outputs
+- **Surrogate-based optimisation** under extreme data scarcity  
+- **Progressive refinement** of modelling and acquisition strategies  
+- **Ensemble learning, trust-region behaviour, and dimensionality reduction**  
+- A **complete, reproducible optimisation pipeline**
+
+### What is black-box optimisation?
+
+Black-box optimisation (BBO) is the problem of optimising an unknown function where we have no access to its internal structure, gradient information, or closed-form expression. We can only observe input–output pairs by querying the function.
+
+In this project, each query is a vector in \([0,1]^d\), and each function returns a single scalar output. The goal is to find high-performing regions with as few evaluations as possible.
+
+### Real-world relevance
+
+BBO is central to many real-world applications, for example:
+
+- **Hyperparameter tuning** in machine learning, where the mapping from parameters to performance is unknown and expensive to evaluate  
+- **Drug discovery**, where testing compound combinations is costly and time-consuming  
+- **Engineering design** and **financial modelling**, where simulations or evaluations are slow and noisy  
+
+In all these settings, evaluations are expensive, so each query must be chosen strategically.
+
+### For a general audience
+
+In this project, I had to improve eight unknown systems using only a small number of weekly trials. I could not see the equations behind the systems, so each new test had to be chosen carefully using what previous results suggested.
+
+I started by exploring widely, then gradually switched to more targeted methods once I had a better idea of where good results might be. Different functions needed different strategies: simpler models for some, Bayesian optimisation for others, and ensemble-based surrogates for the more complex cases. Overall, the project shows how structured experimentation can improve results even when data are limited and the system is mostly unknown.
+
+### Career impact
+
+Completing this project strengthens skills in:
+
+- **Experimental design under uncertainty**  
+- **Surrogate modelling and acquisition-driven sampling**  
+- **Decision-making with limited, noisy data**  
+- **Documentation and communication of ML workflows**
+
+These are critical abilities for roles in data science, quantitative research, and AI systems engineering.
+
+---
+
+## 2. Project presentation
+
+A structured project presentation covering the BBO approach, strategy evolution, patterns and insights, decision-making, and next steps is available in:
+
+- `PROJECT_PRESENTATION.md` — Overview of the optimisation approach, how the strategy evolved, key data patterns, exploration vs exploitation, and reflections for stakeholders.
+
+---
+
+## 3. Datasheet and model card
+
+Documentation for reproducibility and transparency:
+
+- `docs/datasheet.md` — Documents the BBO capstone dataset: motivation, composition, collection process, preprocessing, intended/inappropriate uses, and distribution/maintenance.  
+- `docs/model_card.md` — Describes the optimisation approach: overview, intended use, strategy across the twelve rounds, performance summary, assumptions and limitations, and ethical considerations.
+
+These follow the spirit of datasheets and model cards to make the project auditable and portfolio-ready.
+
+---
+
+## 4. Inputs and outputs
 - **Inputs:**  
   Each query is a vector of real numbers, with dimensionality depending on the function (from 2D up to 8D). Values are constrained to the unit interval `[0,1]`.
 
@@ -28,7 +115,7 @@ Completing this project strengthens skills in experimental design, surrogate mod
   f5 output: 73.84870222928335
   ```
   
-## 3. Challenge objectives
+## 5. Challenge objectives
 The objective is to identify query points that optimise each function (maximisation in most cases). Key constraints include:
 
 - Limited queries: Each round allows only one query per function, so efficiency is critical.  
@@ -42,7 +129,7 @@ Success means balancing exploration (searching new regions) with exploitation (r
 - Interpretability: Building transparent surrogate models
 - Efficiency: Minimising wasted queries
 
-## 4. Technical approach
+## 6. Technical approach
 ### Week 1
 - **Strategy:** Pure exploration. I spread queries evenly across the domain to gain coverage and establish baseline outputs.  
 - **Outcome:** Identified initial regions of interest, but many outputs were near zero or negative.
@@ -184,7 +271,7 @@ The optimisation process converged with clear clusters for Functions 2, 5, and
 
 ---
 
-## 5. Query history (Rounds 1–12)
+## 7. Query history (Rounds 1–12)
 | Week   | Function 1 | Function 2 | Function 3 | Function 4 | Function 5 | Function 6 | Function 7 | Function 8 |
 |--------|------------|------------|------------|------------|------------|------------|------------|------------|
 | **1** | [0.333333, 0.666667] → 5.7248e 48 | [0.777778, 0.222222] → 0.1669 | [0.142857, 0.571429, 0.857143] → −0.0351 | [0.285714, 0.714286, 0.428571, 0.857143] → −16.1819 | [0.062500, 0.500000, 0.937500, 0.250000] → 94.6212 | [0.111111, 0.444444, 0.777778, 0.222222, 0.888889] → −1.7667 | [0.090909, 0.363636, 0.636364, 0.181818, 0.545455, 0.818182] → 1.0627 | [0.125000, 0.250000, 0.375000, 0.500000, 0.625000, 0.750000, 0.875000, 0.062500] → 8.6682 |
@@ -202,7 +289,7 @@ The optimisation process converged with clear clusters for Functions 2, 5, and
 
 The full query history is stored in the /data/ directory.
 
-## 6. Summary of Best So Far Outputs (Across All Weeks)
+## 8. Summary of Best So Far Outputs (Across All Weeks)
 | Function |	Best Output |	Week | Achieved |	Notes |
 |----------|--------------|------|----------|-------|
 | **F1** |	~5.7e 48 |	Week 1 |	Flat function, no meaningful variation
@@ -214,7 +301,7 @@ The full query history is stored in the /data/ directory.
 | **F7**	| ~1.0627 |	Week 1 | Volatile, collapsed in Week 7 |
 | **F8** | 9.2523 |	Week 12 |	Strong basin near upper boundary |
 
-## 7. Final conclusions
+## 9. Final conclusions
 Across twelve rounds, the optimisation strategy evolved from naive exploration to a fully model based, uncertainty aware pipeline. Surrogate modelling, ensemble learning, and acquisition driven sampling enabled efficient navigation of complex landscapes.
 Key insights:
 •	Function 5 contained a steep, high value ridge, discovered through boundary exploration.
@@ -223,7 +310,7 @@ Key insights:
 •	Rolling surrogates and ensemble averaging improved stability in later rounds.
 The project demonstrates practical mastery of Bayesian optimisation under strict query constraints.
 
-## 8. What I learned
+## 10. What I learned
 •	How to design experiments under uncertainty
 •	How to build and update surrogate models
 •	How to balance exploration and exploitation
@@ -231,7 +318,7 @@ The project demonstrates practical mastery of Bayesian optimisation under strict
 •	How to structure a multi week optimisation pipeline
 •	How to document and communicate ML workflows professionally
 
-## 9. Reproducibility
+## 11. Reproducibility
 To reproduce the workflow:
 1.	Load initial .npy inputs/outputs (not included in repo; link provided).
 2.	Train surrogate models (GPR + ensemble).
@@ -242,16 +329,59 @@ To reproduce the workflow:
 
 A full implementation is provided in the notebooks.
 
-## 10. Documentation
+## 12. Documentation
+Key documentation
 •	docs/datasheet.md — Data description, limitations, context
 •	docs/model_card.md — Model behaviour, assumptions, interpretability
-•	plots/ — Optimisation trajectories and uncertainty visualisations
-•	notebooks/ — Full code for all functions
+•	docs/weekly_strategy.md — Consolidated week by week strategy notes and reflections
+•	docs/architecture_diagram.md — High level system and pipeline architecture
+Repository layout
+.
+├── README.md                     # This file
+├── requirements.txt              # Python dependencies
+├── function_description_and_details.md
+├── scripts/                      # Python modules
+│   ├── bayesian_optimisation/    # BO (standard, exploitative, noise-aware)
+│   ├── logistic_regression/      # Linear and nonlinear logistic regression
+│   ├── neural_networks/          # MLP / NN-based surrogates
+│   └── utils/                    # Data loading and visualisation helpers
+├── data/                         # Query data by week
+│   ├── initial_data/
+│   ├── week1/
+│   ├── ...
+│   └── week12/
+├── notebooks/                    # Full code for all functions and experiments
+├── plots/                        # Optimisation trajectories and uncertainty visualisations
+├── docs/
+│   ├── datasheet.md
+│   ├── model_card.md
+│   ├── weekly_strategy.md
+│   └── architecture_diagram.md
+├── PROJECT_PRESENTATION.md       # Final presentation-style project summary
 
-## 11. Visualisations
+
+## 13. Visualisations
 
 All plots are stored in /plots/.
 
 ### Included:
 - best_so_far.png — Best output per function across all weeks
 - f1_trajectory.png … f8_trajectory.png — Per-function output trajectories
+- Additional plots for uncertainty, candidate distributions, and cluster aware sampling (where relevant)
+
+
+## 14. Architecture diagram
+The overall optimisation pipeline and data flow are documented in:
+•	docs/architecture_diagram.md — High level architecture of: 
+o	Data ingestion and storage
+o	Surrogate training and evaluation
+o	Candidate generation and acquisition scoring
+o	Query selection and logging
+o	Visualisation and reporting
+This diagram is intended for technical stakeholders and interviewers to quickly understand how the system is structured end to end.
+
+
+## 15. Weekly strategy
+A consolidated, narrative view of how the strategy evolved week by week (methods, visualisations, and rationale) is provided in:
+•	docs/weekly_strategy.md
+This complements the raw query history and plots by explaining why each change was made and how it affected subsequent decisions.
