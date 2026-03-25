@@ -1,11 +1,11 @@
-# ## Abstract
+## Abstract
 The optimisation system uses a heterogeneous ensemble surrogate to approximate eight hidden black‑box functions under a strict evaluation budget. Each function is modelled independently using Random Forests, Gradient Boosting, Support Vector Regression and multiple neural networks, with predictions aggregated through simple averaging. The surrogate is retrained weekly on all accumulated query–response pairs, enabling adaptation to sparse and unevenly distributed data.
 
 Candidate points are generated through large‑scale uniform sampling in `x ∈ [0,1]^d`, and the next query is selected by maximising the ensemble’s predicted output. This approach provides a stable, model‑agnostic ranking mechanism that avoids degeneracy issues observed in earlier pipelines while remaining computationally lightweight. Although the ensemble lacks uncertainty quantification and may over‑exploit historically promising regions, it offers a practical balance of robustness, flexibility and simplicity for black‑box optimisation in synthetic domains.
 
 ---
 
-# ## Model Card: Ensemble Surrogate Optimisation Approach
+## Model Card: Ensemble Surrogate Optimisation Approach
 
 ### **Model Overview**
 - **Name:** Ensemble Surrogate Optimiser  
@@ -72,7 +72,7 @@ The optimiser approximates eight unknown black‑box functions in the Imperial C
 
 ---
 
-# ## Performance Summary
+## Performance Summary
 
 ### **Performance was evaluated indirectly through**
 - Improvement in weekly outputs  
@@ -93,7 +93,7 @@ The optimiser approximates eight unknown black‑box functions in the Imperial C
 
 ---
 
-# ## Assumptions and Limitations
+## Assumptions and Limitations
 
 ### **Assumptions**
 - Functions are continuous enough for surrogate modelling  
