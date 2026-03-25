@@ -17,7 +17,7 @@ Over 13 weeks, the dataset grew into a living record of:
 ### **Contents**
 The dataset contains:
 
-- Input vectors: \(x \in [0,1]^d\) for eight functions (2D–8D)  
+- Input vectors: x in [0, 1]^d for eight functions (2D–8D)  
 - Outputs: scalar responses returned by the portal  
 - Week indices (1–13): which submission round produced the point  
 - Function indices (1–8): F1–F8  
