@@ -1,4 +1,4 @@
-# ## Datasheet for the BBO Capstone Project Dataset
+## Datasheet for the BBO Capstone Project Dataset
 
 ## **Motivation**
 This dataset was created for the Imperial College London Black Box Optimisation (BBO) Capstone Project. It records all query vectors and function evaluations submitted across 13 weeks for eight hidden black‑box functions. The dataset supports surrogate modelling, sequential optimisation, performance analysis, and reproducibility of the full optimisation pipeline.
@@ -17,7 +17,7 @@ Over 13 weeks, the dataset grew into a living record of:
 ### **Contents**
 The dataset contains:
 
-- Input vectors: x in [0, 1]^d for eight functions (2D–8D)  
+- Input vectors: `x ∈ [0,1]^d` for eight functions (2D–8D)  
 - Outputs: scalar responses returned by the portal  
 - Week indices (1–13): which submission round produced the point  
 - Function indices (1–8): F1–F8  

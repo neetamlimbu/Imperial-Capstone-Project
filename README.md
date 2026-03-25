@@ -164,10 +164,10 @@ Hybrid scoring balanced error metrics and stability, preventing bias toward a si
 Bayesian optimisation was introduced in Week 5 to replace earlier heuristic methods. Using all historical data from Weeks 1–4, I trained multiple surrogate models (Random Forest, Gradient Boosting, SVR, kNN, MLP, and Gaussian Process Regression).
 GPR was selected as the primary surrogate because it provides calibrated uncertainty, which is essential for Expected Improvement (EI).
 For each function:
-•	Generated 2000 random candidate points in ([0,1]^d)
-•	Predicted mean and uncertainty using GPR
-•	Computed EI for each candidate
-•	Selected the EI maximiser as the Week 5 query
+-	Generated 2000 random candidate points in ([0,1]^d)
+-	Predicted mean and uncertainty using GPR
+-	Computed EI for each candidate
+-	Selected the EI maximiser as the Week 5 query
 This ensured a principled exploration–exploitation balance.
 - **Outcome:**
 Week 5 outputs showed moderate improvements for several functions (e.g., F2, F4, F7, F8).
@@ -177,11 +177,11 @@ The EI driven approach successfully diversified exploration without drifting int
 ### Week 6
 - **Strategy:**
 Week 6 introduced a multi model ensemble trained on Weeks 1–5 data:
-•	Random Forest
-•	Gradient Boosting
-•	SVR
-•	Multiple MLPs
-•	GPR (for uncertainty aware scoring)
+-	Random Forest
+-	Gradient Boosting
+-	SVR
+-	Multiple MLPs
+-	GPR (for uncertainty aware scoring)
 Predictions were averaged to reduce variance, and a stability penalty discouraged large deviations from prior outputs.
 Candidate points were generated both globally (uniform sampling) and locally (perturbations around top historical points).
 - **Outcome:**
@@ -194,9 +194,9 @@ Ensemble averaging reduced noise and produced more reliable query points.
 Week 7 focused on boundary exploration to test whether extreme regions contained hidden optima.
 This was motivated by ensemble disagreement and high uncertainty in sparsely sampled corners of the domain.
 - **Outcome:**
-•	Function 5 produced a dramatic spike (1084+), revealing a steep ridge.
-•	Function 7 collapsed sharply, indicating high volatility.
-•	Function 8 uncovered a new high value region near the upper boundary.
+-	Function 5 produced a dramatic spike (1084+), revealing a steep ridge.
+-	Function 7 collapsed sharply, indicating high volatility.
+-	Function 8 uncovered a new high value region near the upper boundary.
 These emergent behaviours reshaped the search strategy for subsequent rounds.
 
 ### Week 8
@@ -220,10 +220,10 @@ The optimisation process became more stable and predictable.
 ### Week 10
 - **Strategy:**
 Week 10 used a combination of:
-•	Global random sampling
-•	Local perturbation sweeps
-•	Ensemble scoring
-•	Uncertainty aware selection
+-	Global random sampling
+-	Local perturbation sweeps
+-	Ensemble scoring
+-	Uncertainty aware selection
 This round resembled a model based RL planner: thousands of hypothetical candidates were evaluated before selecting a single query.
 - **Outcome:**
 Function 5 reached 1616.64, the highest value observed across all weeks.
@@ -242,9 +242,9 @@ Function 4 improved slightly, and Function 6 showed smoother behaviour.
 - **Strategy:**
 The final week used all historical data (Weeks 1–11) to train the ensemble.
 Candidate points were generated using:
-•	Local sampling around top clusters
-•	Global random sampling
-•	Uncertainty weighted scoring
+-	Local sampling around top clusters
+-	Global random sampling
+-	Uncertainty weighted scoring
 This balanced exploitation of known basins with a final sweep for undiscovered optima.
 - **Outcome:**
 Function 8 reached 9.25, the highest value across all rounds.
